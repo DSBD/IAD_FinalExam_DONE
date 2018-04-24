@@ -1,0 +1,18 @@
+﻿<Page
+    x:Class="IAD_FinalExam.CreateTask"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IAD_FinalExam"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel HorizontalAlignment="Center">
+            <Button Content="Back" Width="150" Height="Auto" FontSize="32" Margin="50" Click="Back_Click"/>
+            <TextBox x:Name="txt_DescBox" Header="Task Description" FontSize="24" Width="700"/>
+            <CalendarDatePicker x:Name="DueDate" Header="Due Date" Width="700" HorizontalAlignment="Center" FontSize="24" Margin="20"/>
+            <Button Content="Save" HorizontalAlignment="Center" Margin="20" FontSize="24" Width="150" Click="Save_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

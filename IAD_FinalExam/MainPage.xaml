@@ -8,6 +8,48 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200" />
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Rectangle Grid.ColumnSpan="3" Fill="Gray"/>
+            <TextBlock Grid.Column="1" Text="To Do List" FontSize="80" Foreground="White" VerticalAlignment="Center"/>
+            <TextBlock x:Name="txt_NumTasks" Text="You Have 0 Tasks to Finish" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" FontSize="48" Margin="10"/>
+            <Button Grid.Column="1" Grid.Row="2" Content="Add Task" Click="Button_Click" FontSize="24" Margin="30"/>
 
+            <Grid Padding="10" Background="LightGray" Grid.Column="1" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TextBlock FontSize="20" Foreground="Black" Text="Task" />
+                <TextBlock Grid.Column="1" TextAlignment="Right" HorizontalAlignment="Right"  FontSize="20" Foreground="Black"  Text="DueDate" Width="719" />
+            </Grid>
+
+            <ListView x:Name="MainTaskList" Grid.Column="1" Grid.Row="5">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Task">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Foreground="Black" Text="{x:Bind Description}" Width="480"/>
+                            <TextBlock Grid.Column="1" Foreground="Black" Text="{x:Bind DueDate}" TextAlignment="Right" HorizontalAlignment="Right" Width="500"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </Grid>
 </Page>

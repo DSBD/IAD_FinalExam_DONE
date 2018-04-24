@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -22,9 +23,41 @@ namespace IAD_FinalExam
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        static List<Task> taskList = new List<Task>();
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            txt_NumTasks.Text = $"You Have {taskList.Count} Task(s) to Finish";
+                        
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(CreateTask));
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            try
+            {
+                taskList.Add((Task)e.Parameter);
+
+                txt_NumTasks.Text = $"You Have {taskList.Count} Task(s) to Finish";
+
+                if (taskList.Count > 0)
+                {
+                    foreach (Task curTask in taskList)
+                    {
+                        MainTaskList.Items.Add(curTask);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
         }
     }
 }
